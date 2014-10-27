@@ -144,7 +144,7 @@ public class EnterCredentialsFragment extends Fragment implements TextWatcher, O
 					}
 				}
 			}
-			args.putByteArray(QueryServerDialogFragment.EXTRA_KEYSTORE, key);
+			args.putByteArray(QueryServerDialogFragment.EXTRA_CACERT, key);
 		} else {
 			Log.e(TAG, "Key file '" + keyFile.toString() + "' not found.");
 		}

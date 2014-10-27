@@ -35,7 +35,7 @@ public class QueryServerDialogFragment extends DialogFragment implements LoaderC
 		EXTRA_USER_NAME = "user_name",
 		EXTRA_PASSWORD = "password",
 		EXTRA_AUTH_PREEMPTIVE = "auth_preemptive",
-		EXTRA_KEYSTORE = "keystore";
+		EXTRA_CACERT = "cacert";
 	
 	ProgressBar progressBar;
 	
@@ -104,7 +104,7 @@ public class QueryServerDialogFragment extends DialogFragment implements LoaderC
 				args.getString(EXTRA_USER_NAME),
 				args.getString(EXTRA_PASSWORD),
 				args.getBoolean(EXTRA_AUTH_PREEMPTIVE),
-				args.getByteArray(EXTRA_KEYSTORE)
+				args.getByteArray(EXTRA_CACERT)
 			);
 			
 			try {

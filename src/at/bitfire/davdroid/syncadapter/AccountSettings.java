@@ -41,7 +41,7 @@ public class AccountSettings {
 		KEY_ADDRESSBOOK_CTAG = "addressbook_ctag",
 		KEY_ADDRESSBOOK_VCARD_VERSION = "addressbook_vcard_version",
 		
-		KEY_CLIENT_KEYSTORE = "client_keystore";
+		KEY_CLIENT_CACERT = "client_cacert";
 	
 	Context context;
 	AccountManager accountManager;
@@ -71,8 +71,8 @@ public class AccountSettings {
 		bundle.putString(KEY_SETTINGS_VERSION, String.valueOf(CURRENT_VERSION));
 		bundle.putString(KEY_USERNAME, serverInfo.getUserName());
 		bundle.putString(KEY_AUTH_PREEMPTIVE, Boolean.toString(serverInfo.isAuthPreemptive()));
-		if (serverInfo.getKeyStore() != null) {
-			bundle.putString(KEY_CLIENT_KEYSTORE, Base64.encodeToString(serverInfo.getKeyStore(), Base64.DEFAULT));
+		if (serverInfo.getCaCert() != null) {
+			bundle.putString(KEY_CLIENT_CACERT, Base64.encodeToString(serverInfo.getCaCert(), Base64.DEFAULT));
 		}
 		for (ServerInfo.ResourceInfo addressBook : serverInfo.getAddressBooks())
 			if (addressBook.isEnabled()) {
@@ -98,8 +98,8 @@ public class AccountSettings {
 		return Boolean.parseBoolean(accountManager.getUserData(account, KEY_AUTH_PREEMPTIVE));
 	}
 	
-	public byte[] getKeyStore() {
-		String data = accountManager.getUserData(account, KEY_CLIENT_KEYSTORE);
+	public byte[] getCaCert() {
+		String data = accountManager.getUserData(account, KEY_CLIENT_CACERT);
 		if (data == null) {
 			return null;
 		} else {

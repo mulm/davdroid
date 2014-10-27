@@ -25,7 +25,7 @@ public class DavResourceFinder {
 	
 	public static void findResources(Context context, ServerInfo serverInfo) throws URISyntaxException, DavException, HttpException, IOException {
 		// disable compression and enable network logging for debugging purposes 
-		CloseableHttpClient httpClient = DavHttpClient.create(true, true);
+		CloseableHttpClient httpClient = DavHttpClient.create(true, true, serverInfo.getCaCert());
 		
 		WebDavResource base = new WebDavResource(httpClient, new URI(serverInfo.getProvidedURL()), serverInfo.getUserName(),
 				serverInfo.getPassword(), serverInfo.isAuthPreemptive());

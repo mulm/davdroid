@@ -7,18 +7,10 @@
  ******************************************************************************/
 package at.bitfire.davdroid.syncadapter;
 
-import java.io.ByteArrayInputStream;
 import java.io.Closeable;
 import java.io.IOException;
-import java.security.KeyStore;
-import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-import javax.net.ssl.KeyManager;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.KeyStoreBuilderParameters;
-import javax.net.ssl.SSLContext;
 
 import lombok.Getter;
 
@@ -120,8 +112,7 @@ public abstract class DavSyncAdapter extends AbstractThreadedSyncAdapter impleme
 			httpClient = DavHttpClient.create(
 				settings.getBoolean(Constants.SETTING_DISABLE_COMPRESSION, false),
 				settings.getBoolean(Constants.SETTING_NETWORK_LOGGING, false),
-				accountSettings.getKeyStore(),
-				accountSettings.getPassword()
+				accountSettings.getCaCert()
 			);
 		}
 		
